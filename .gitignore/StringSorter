@@ -1,0 +1,44 @@
+package de.htw.app;
+
+import java.util.Arrays;
+
+/* From dictionary_english.txt
+ .
+ .
+ .
+walewort
+wali
+walies
+waling
+walk
+walkable
+walkaway
+walkaways
+walked
+walker
+walkers
+walkie
+.
+.
+.
+ */
+
+public class StringSorter {
+	public static void main(String args[]) {
+		
+		String[] strArrayChanged = {
+				"wali",
+				"walk",
+				"walies",
+				"waling",
+				"walkaway",
+				"walkable",
+				"walkaways"};
+		
+		System.out.println("String Array (Changed): " + Arrays.toString(strArrayChanged));
+		Arrays.sort(strArrayChanged);
+		System.out.println("String Array (Changed after sorting): " + Arrays.toString(strArrayChanged));
+
+	}
+}
+
