@@ -1,0 +1,11 @@
+package de.htw.app;
+
+import java.util.ArrayList;
+
+public interface SortingAlogs {
+	
+	public ArrayList<String> quickSortCustom(ArrayList<String> unsortiert);
+	
+	public ArrayList<String> mergeSortCustom(ArrayList<String> unsortiert);
+
+}
