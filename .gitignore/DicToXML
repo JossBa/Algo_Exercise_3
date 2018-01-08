@@ -1,0 +1,56 @@
+package de.htw.app;
+
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXB;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+public class DicToXML {
+	/**
+	 * @param args
+	 * @throws JAXBException
+	 */
+	public static void main(String[] args) throws JAXBException {
+		
+		//ArrayList <DictionaryItem> list = new ArrayList <DictionatyItem> ();
+		
+		DictionaryItem dicVal = new DictionaryItem();
+		dicVal.setRanking(1);
+		dicVal.setValue("hi ");
+
+		DictionaryItem dicVal2 = new DictionaryItem();
+		dicVal2.setRanking(2);
+		dicVal2.setValue("hallo ");
+
+		// Output to System.out
+		JAXBContext context = JAXBContext.newInstance(DictionaryItem.class);
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+		//hier wird in die xml geschrieben 		
+
+		m.marshal(dicVal, System.out);
+		
+		m.marshal(dicVal2,System.out);
+		
+		// Output to File System
+		File file = new File("dictionary.xml");
+		
+		// OutputStream impl. here
+		
+		// use of Utility-Class JAXB with underlaying static methods
+		JAXB.marshal(dicVal, file);
+
+		//JAXB.marshal(dicVal2, file);
+
+	}
+
+}
+
