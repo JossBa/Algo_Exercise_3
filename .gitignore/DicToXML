@@ -18,7 +18,7 @@ public class DicToXML {
 	 * @throws JAXBException
 	 */
 	public static void main(String[] args) throws JAXBException {
-		
+		//CHANGES
 		//ArrayList <DictionaryItem> list = new ArrayList <DictionatyItem> ();
 		
 		DictionaryItem dicVal = new DictionaryItem();
@@ -51,6 +51,5 @@ public class DicToXML {
 		//JAXB.marshal(dicVal2, file);
 
 	}
-
 }
 
