@@ -1,0 +1,78 @@
+package de.htw.app;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+
+@SuppressWarnings("rawtypes")
+public class Dictionary implements Comparator{
+	
+	/*
+	 * Dictionary stellt ein Wörterbuch dar
+	 * und speichert alle Wörter des Buches in ArrayList <String> ab
+	 * 
+	 * 
+	 * */
+	
+	ArrayList <String> dic; 
+	
+	Dictionary(){
+		dic = new ArrayList<String>();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dic == null) ? 0 : dic.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Dictionary other = (Dictionary) obj;
+		if (dic == null) {
+			if (other.dic != null)
+				return false;
+		} else if (!dic.equals(other.dic))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public ArrayList<String> getDic() {
+		return dic;
+	}
+
+	public void setDic(ArrayList<String> dic) {
+		this.dic = dic;
+	}
+	
+	// gibt das Wort des Wörterbuches an einer bestimmten Stelle zurück
+	public String getWord(int line){
+		return dic.get(line);
+	}
+	// fügt dem Dictionary ein Wort hinzu
+	public void addWord(String word){
+		dic.add(word);
+	}
+	
+	// printet den Inhalt des Dictionarys aus
+	public void printOutArray (){
+		for(String x: dic){
+			System.out.println(x);
+		}
+	}
+}
