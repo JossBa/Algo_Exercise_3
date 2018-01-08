@@ -1,0 +1,47 @@
+package de.htw.app;
+
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+public class HashChecker {
+
+	public static void main(String[] args) throws Exception {
+		// Create checksum for this file
+		InputStream is = null;
+		URL url = new URL("http://home.htw-berlin.de/~mautsch/dictionary_english.txt");
+		is = url.openStream();
+
+		String md5 = DigestUtils.md5Hex(is);
+		is.close();
+
+		// see checksum
+		System.out.println("MD5 (dictionary_english.txt): " + md5);
+
+		// vergleicht zwei Text-Dateien miteinander
+
+		File file = new File("/Users/Josephine/Desktop/dictionary_english.txt");
+		InputStream fis = new FileInputStream(file);
+		String md5_fromFile = DigestUtils.md5Hex(fis);
+		fis.close();
+		System.out.println("MD5 lokale Datei: " + md5_fromFile);
+
+		File file2 = new File("/Users/Josephine/Desktop/dictionary_english_modified.txt");
+		FileInputStream fis2 = new FileInputStream(file2);
+		String md5_fromFile2 = DigestUtils.md5Hex(fis2);
+		fis.close();
+		System.out.println("MD5 lokale Datei 2: " + md5_fromFile2);
+
+		
+		//File x = new File("/Users/Josephine/Desktop/dictionary_english.txt");
+		
+	} // main
+
+}
+
