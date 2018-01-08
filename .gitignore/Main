@@ -1,0 +1,49 @@
+package de.htw.app;
+
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.Collections;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		//URL einlesen und als text-file abspeichern
+		//File zu text
+		
+		//dictionary_english
+		
+		File file = new File("/Users/Josephine/Desktop/dictionary_english.txt");
+		DicReader reader = new DicReader(file);
+		Dictionary original = new Dictionary();
+		//dictionary_english_modified
+		File file2 = new File("/Users/Josephine/Desktop/dictionary_english_modified.txt");
+		DicReader reader2 = new DicReader(file2);
+		Dictionary fehler = new Dictionary();
+	
+     	original = reader.readInTextToDic();
+        fehler = reader2.readInTextToDic();
+
+        DicComparator dc = new DicComparator();
+        dc.sortDic(original);
+        dc.sortDic(fehler);
+        
+        System.out.println("1...");
+        System.out.println();
+        
+		System.out.println(dc.findGaps( original, fehler));
+        System.out.println("2...");
+
+        dc.fillGaps(original, fehler);
+        System.out.println("gaps gefüllt: noch fehlende wörter? " + dc.findGaps(original, fehler));
+        
+        System.out.println();
+        
+		System.out.println(dc.findGaps( fehler, original));
+        System.out.println("3...");
+
+        dc.fillGaps( fehler, original);
+        System.out.println("gaps gefüllt: noch fehlende wörter? " + dc.findGaps(fehler,original));
+        
+	}
+}
