@@ -1,0 +1,36 @@
+package de.htw.app;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class DicReader {
+
+	/*
+	 * DicReader liest Text aus Files mittels Scanner
+	 * Methode readInTextToDic fügt alle Wörter aus dem File 
+	 * einem Dictionary hinzu
+	 * 
+	 * 
+	 */	
+	Scanner scan;
+	
+	public DicReader(File file){
+		try {
+			scan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+
+	public Dictionary readInTextToDic(){
+		Dictionary temp = new Dictionary();
+		
+		while(scan.hasNext()){
+			 temp.addWord(scan.nextLine()); 
+			//temp.addWordHash(scan.next());
+		}
+		return temp;
+	}
+}
